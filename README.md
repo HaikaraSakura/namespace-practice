@@ -178,7 +178,7 @@ echo \App\BASE_URL; // 出力される
 
 PSR-4は名前空間を利用したautoloaderに関する規約。  
 
-ComposerはPSR-4準拠のautoloaderを内蔵しており、conmposer.jsonで名前空間のトップレベルとファイルパスを紐付けを設定できる。  
+ComposerはPSR-4準拠のautoloaderを内蔵しており、conmposer.jsonで名前空間のトップレベルとファイルパスの紐付けを設定できる。  
 下記のように記述すると、`src`ディレクトリが名前空間`App`に対するオートロードの起点になる。  
 
 ```JSON
