@@ -205,3 +205,7 @@ namespace \App\Admin;
 
 class IndexController {...}
 ```
+
+なお、Composerを利用しない場合、autoloaderを自分で定義する必要がある。  
+PSR-4に準拠したautoloaderの定義の例は下記リンクを参照のこと。  
+[https://github.com/TaroMori0321/class-autoload](https://github.com/TaroMori0321/class-autoload)
