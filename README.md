@@ -1,4 +1,4 @@
-# 名前空間について
+# 名前空間とPSR-4
 
 PSR-4は名前空間の利用方法に関する規約である。  
 名前空間はPHP5.3から導入された。クラス名などの衝突を回避する名前解決のための機能。  
@@ -173,4 +173,35 @@ const BASE_URL = 'http://localhost/test_project';
 
 echo BASE_URL; // 出力される
 echo \App\BASE_URL; // 出力される
+```
+
+## PSR-4とオートロード
+
+PSR-4は名前空間を利用したautoloaderに関する規約。  
+
+Composerの設定ファイルであるconmposer.jsonで、名前空間のトップレベルとファイルパスを紐付ける。  
+以下のように記述した場合、`src`ディレクトリが名前空間`App`に対するオートロードの起点になるので、  
+アプリケーション内で記述するクラスファイルは、すべて`src`ディレクトリの配下に設置しなければならない。
+
+```JSON
+{
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
+```
+
+`src/Admin`に`IndexController`というクラスのファイルを設置する場合、  
+以下のように、`IndexController`クラスは名前空間`App\Admin`に属する必要がある。
+
+```PHP
+<?php
+
+declare(strict_types=1);
+
+namespace \App\Admin;
+
+class IndexController {...}
 ```
