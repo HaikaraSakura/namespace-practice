@@ -76,7 +76,7 @@ var_dump(IndexController::class === '\App\Admin\IndexController'); // true
 仮に'\\'をつけなかった場合、名前空間は相対的に解決されてしまう。
 
 ```PHP
-namespace \App\Admin;
+namespace App\Admin;
 
 use Knp\Controller\Controller;
 
@@ -94,7 +94,7 @@ namespaceとuse、その他の記述順の例
 
 declare(strict_types=1);
 
-namespace \App\Admin;
+namespace App\Admin;
 
 use \Knp\Controller\Controller;
 
@@ -115,7 +115,7 @@ class IndexController extends Controller {...}
 見つからなければグローバルのtimeを実行するという順序になるため、処理の流れとして無駄がある（大抵の場合、有意な差が生じるほどではない）。
 
 ```PHP
-namespace \App\Admin;
+namespace App\Admin;
 
 echo time();
 ```
@@ -123,9 +123,21 @@ echo time();
 先頭に'\\'を付ければ、グローバルに定義された関数を直接呼び出せるので、処理速度の低下を防ぐことができる。  
 
 ```PHP
-namespace \App\Admin;
+namespace App\Admin;
 
 echo \time();
+```
+
+```PHP
+namespace App;
+
+function pr(mixed $value): void {
+    echo '<pre>';
+    print_r($value);
+    echo '</pre>';
+}
+
+\App\pr('aaa');
 ```
 
 ### 定数と名前空間
@@ -192,7 +204,7 @@ requireやincludeで都度読み込むことなく、クラスを呼び出すこ
 以下のように、`IndexController`クラスは名前空間`App\Admin`に属していなければならない。
 
 ```PHP
-namespace \App\Admin;
+namespace App\Admin;
 
 class IndexController {...}
 ```
